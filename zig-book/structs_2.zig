@@ -13,6 +13,11 @@ const Vec3 = struct {
         const zd = m.pow(f64, self.z - other.z, 2.0);
         return m.sqrt(xd + yd + zd);
     }
+    pub fn twice(self: *Vec3) void {
+        self.x = self.x * 2.0;
+        self.y = self.y * 2.0;
+        self.z = self.z * 2.0;
+    }
 };
 
 pub fn main() !void {
@@ -20,4 +25,8 @@ pub fn main() !void {
     const v2 = Vec3{ .x = 5.1, .y = 5.6, .z = 1.6 };
 
     std.debug.print("Distance: {d}\n", .{v1.distance(v2)});
+
+    var v3 = Vec3{ .x = 4.2, .y = 2.4, .z = 0.9 };
+    v3.twice();
+    std.debug.print("Doubled: {d}\n", .{v3.x});
 }
